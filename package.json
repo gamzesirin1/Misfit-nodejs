@@ -1,0 +1,23 @@
+{
+	"name": "misfit-nodejs",
+	"version": "1.0.0",
+	"description": "fitness misfit proje",
+	"main": "app.js",
+	"scripts": {
+		"start": "nodemon app.js"
+	},
+	"keywords": [
+		"fitness",
+		"nodejs",
+		"app"
+	],
+	"author": "Gamze Şirin",
+	"license": "ISC",
+	"dependencies": {
+		"ejs": "^3.1.9",
+		"express": "^4.18.2"
+	},
+	"devDependencies": {
+		"nodemon": "^3.0.1"
+	}
+}
