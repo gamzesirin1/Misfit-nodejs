@@ -28,3 +28,18 @@ exports.getAllTrainings = async (req, res) => {
 		})
 	}
 }
+
+exports.getTraining = async (req, res) => {
+	try {
+		const training = await Training.findOne({ slug: req.params.slug })
+		res.status(200).render('training', {
+			training: training,
+			page_name: 'trainings'
+		})
+	} catch (err) {
+		res.status(400).json({
+			status: 'fail',
+			message: err
+		})
+	}
+}

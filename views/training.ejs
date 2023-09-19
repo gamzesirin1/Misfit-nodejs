@@ -1,0 +1,32 @@
+<%- include('partials/_header') %>
+<div class="back_re">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="title">
+					<h2><%= training.name %></h2>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="trainers">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="titlepage"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4 offset-4">
+				<div id="trai" class="trainer_box center">
+					<div class="trainer">
+						<h3><%= training.name %></h3>
+						<p><%= training.description %></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<%- include('partials/_footer') %>
