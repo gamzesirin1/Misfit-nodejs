@@ -1,25 +1,12 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const dotenv = require('dotenv')
+const db = require('./config/db')
+
 const pageRoute = require('./routes/pageRoutes')
 const trainingRoute = require('./routes/trainingRoute')
-
+dotenv.config()
 const app = express()
-
-//Connect to DB
-// mongoose.connect('mongodb://127.0.0.1/my_database');
-mongoose
-	.connect('mongodb://localhost:27017/misfit-db', {
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-		useFindAndModify: false,
-		useCreateIndex: true
-	})
-	.then(() => {
-		console.log('DB Connected successfully')
-	})
-	.catch((err) => {
-		console.log(err)
-	})
 
 //Templete Engine
 app.set('view engine', 'ejs')
@@ -31,10 +18,15 @@ app.use(express.urlencoded({ extended: true }))
 
 //Routes
 app.use('/', pageRoute)
-app.use('/training', trainingRoute)
+app.use('/trainings', trainingRoute)
 
 //Listen on port
-const port = 3000
-app.listen(port, () => {
-	console.log(`Server is running on port ${port}`)
+
+const PORT = process.env.PORT || 5000
+
+//Connect to DB
+db()
+
+app.listen(PORT, () => {
+	console.log(`Server ${PORT} portunda başlatıldı.`)
 })
