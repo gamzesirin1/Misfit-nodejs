@@ -6,9 +6,9 @@ const trainingRoute = require('./routes/trainingRoute')
 const app = express()
 
 //Connect to DB
-// mongoose.connect('mongodb://127.0.0.1/my_database');       27017
+// mongoose.connect('mongodb://127.0.0.1/my_database');
 mongoose
-	.connect('mongodb://localhost/misfit-db', {
+	.connect('mongodb://localhost:27017/misfit-db', {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 		useFindAndModify: false,
@@ -20,11 +20,14 @@ mongoose
 	.catch((err) => {
 		console.log(err)
 	})
+
 //Templete Engine
 app.set('view engine', 'ejs')
 
 //Middlewares
 app.use(express.static('public'))
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 //Routes
 app.use('/', pageRoute)
