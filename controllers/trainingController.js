@@ -1,4 +1,5 @@
 const Training = require('../models/Training')
+const Category = require('../models/Category')
 exports.createTraining = async (req, res) => {
 	try {
 		const training = await Training.create(req.body)
@@ -16,9 +17,18 @@ exports.createTraining = async (req, res) => {
 
 exports.getAllTrainings = async (req, res) => {
 	try {
-		const trainings = await Training.find()
+		const categorySlug = req.query.categories
+		const category = await Category.findOne({ slug: categorySlug })
+
+		let filter = {}
+		if (categorySlug) {
+			filter = { category: category._id }
+		}
+		const trainings = await Training.find(filter)
+		const categories = await Category.find()
 		res.status(200).render('trainings', {
 			trainings: trainings,
+			categories: categories,
 			page_name: 'trainings'
 		})
 	} catch (err) {
