@@ -16,6 +16,10 @@ const trainingSchema = new Schema({
 		type: Date,
 		default: Date.now
 	},
+	category: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'Category'
+	},
 	slug: {
 		type: String,
 		unique: true
