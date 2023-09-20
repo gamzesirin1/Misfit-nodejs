@@ -1,10 +1,32 @@
-<%- include('partials/_header'); %> <% if(user) { %>
-<div class="all-title-box">
+<%- include('partials/_header'); %> <% if(user) { %> <% if(user.role ==='student') { %>
+
+<div class="back_re">
 	<div class="container text-center">
-		<h1><%= user.name %><span class="m_1">Lorem Ipsum dolroin gravida nibh vel velit.</span></h1>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="title">
+					<h2><%= user.name %></h2>
+					<span class="m_1">STUDENT</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<% } %> <% if(user.role ==='teacher') { %>
+<div class="back_re">
+	<div class="container text-center">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="title">
+					<h2><%= user.name %></h2>
+					<span class="m_1">TEACHER</span>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 
+<% } %>
 <div id="overviews" class="section wb">
 	<div class="container">
 		<div class="row">
@@ -19,14 +41,90 @@
 							aliquand.
 						</p>
 					</div>
-					<div class="author-desc">
-						<img src="images/author.jpg" alt="about author" />
+				</div>
+			</div>
+			<!-- end col -->
+		</div>
+		<!-- end row -->
+		<div class="row mt-5">
+			<div class="col-lg-6 col-md-6 col-12">
+				<div class="course-item mb-5">
+					<div class="image-blog">
+						<img src="/images/tra.jpg" alt="" class="img-fluid" />
+					</div>
+					<div class="course-br">
+						<div class="course-title">
+							<h2><a href="/training" title="">Engineering</a></h2>
+						</div>
+						<div class="course-desc">
+							<p>
+								Lorem ipsum door sit amet, fugiat deicata avise id cum, no quo maiorum intel ogrets geuiat operts
+								elicata libere avisse id cumlegebat, liber regione eu sit....
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>
-			<!-- end container -->
+			<!-- end col -->
+			<div class="col-lg-6 col-md-6 col-12">
+				<div class="course-item mb-5">
+					<div class="image-blog">
+						<img src="/images/tra0.jpg" alt="" class="img-fluid" />
+					</div>
+					<div class="course-br">
+						<div class="course-title">
+							<h2><a href="/training" title="">Hotel Management</a></h2>
+						</div>
+						<div class="blog-desc">
+							<p>
+								Lorem ipsum door sit amet, fugiat deicata avise id cum, no quo maiorum intel ogrets geuiat operts
+								elicata libere avisse id cumlegebat, liber regione eu sit....
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end col -->
+			<div class="col-lg-6 col-md-6 col-12">
+				<div class="course-item mb-5">
+					<div class="image-blog">
+						<img src="/images/tra1.jpg" alt="" class="img-fluid" />
+					</div>
+					<div class="course-br">
+						<div class="course-title">
+							<h2><a href="/training" title="">Hotel Management</a></h2>
+						</div>
+						<div class="blog-desc">
+							<p>
+								Lorem ipsum door sit amet, fugiat deicata avise id cum, no quo maiorum intel ogrets geuiat operts
+								elicata libere avisse id cumlegebat, liber regione eu sit....
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end col -->
+			<div class="col-lg-6 col-md-6 col-12">
+				<div class="course-item mb-5">
+					<div class="image-blog">
+						<img src="/images/tra.jpg" alt="" class="img-fluid" />
+					</div>
+					<div class="course-br">
+						<div class="course-title">
+							<h2><a href="/training" title="">Hotel Management</a></h2>
+						</div>
+						<div class="blog-desc">
+							<p>
+								Lorem ipsum door sit amet, fugiat deicata avise id cum, no quo maiorum intel ogrets geuiat operts
+								elicata libere avisse id cumlegebat, liber regione eu sit....
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end col -->
 		</div>
-		<!-- end section -->
+		<!-- end row -->
 	</div>
 	<!-- end container -->
 </div>
