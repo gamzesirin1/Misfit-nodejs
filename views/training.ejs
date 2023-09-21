@@ -39,7 +39,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<% if (!(user.trainings.includes(training._id))) { %>
+			<% if (user && !(user.trainings.includes(training._id))) { %>
 			<form action="/trainings/enroll" method="POST" class="col-md-4 offset-5 pl-5 center">
 				<input type="hidden" name="training_id" value="<%= training._id %>" />
 				<button class="btn btn-md btn-warning text-white"><span>ENROLL</span></button>
