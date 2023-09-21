@@ -40,6 +40,10 @@
 						</div>
 						<div class="course-desc">
 							<p><%= user.trainings[i].description %></p>
+							<form action="/trainings/release" method="POST" class="col-md-4 offset-5 pl-5 center">
+								<input type="hidden" name="training_id" value="<%= user.trainings[i]._id %>" />
+								<button class="btn btn-md btn-danger text-white"><span>RELEASE</span></button>
+							</form>
 						</div>
 					</div>
 				</div>

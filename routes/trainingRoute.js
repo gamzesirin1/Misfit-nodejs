@@ -6,5 +6,6 @@ router.route('/').post(roleMiddleware(['teacher', 'admin']), trainingController.
 router.route('/').get(trainingController.getAllTrainings)
 router.route('/:slug').get(trainingController.getTraining)
 router.route('/enroll').post(trainingController.enrollTraining)
+router.route('/release').post(trainingController.releaseTraining)
 
 module.exports = router
