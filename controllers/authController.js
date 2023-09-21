@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt')
+const { validationResult } = require('express-validator')
 const User = require('../models/User')
 const Category = require('../models/Category')
 const Training = require('../models/Training')
@@ -7,10 +8,11 @@ exports.createUser = async (req, res) => {
 		const user = await User.create(req.body)
 		res.status(201).redirect('/login')
 	} catch (err) {
-		res.status(400).json({
-			status: 'fail',
-			message: err
-		})
+		const errors = validationResult(req)
+		console.log(errors)
+		console.log(errors.array()[0].msg)
+
+		res.status(400).redirect('/register')
 	}
 }
 exports.loginUser = async (req, res) => {
