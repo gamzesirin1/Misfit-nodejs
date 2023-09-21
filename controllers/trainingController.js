@@ -2,7 +2,12 @@ const Training = require('../models/Training')
 const Category = require('../models/Category')
 exports.createTraining = async (req, res) => {
 	try {
-		const training = await Training.create(req.body)
+		const training = await Training.create({
+			name: req.body.name,
+			description: req.body.description,
+			category: req.body.category,
+			user: req.session.userID
+		})
 		res.status(201).redirect('/trainings')
 	} catch (err) {
 		res.status(400).json({
@@ -38,7 +43,7 @@ exports.getAllTrainings = async (req, res) => {
 
 exports.getTraining = async (req, res) => {
 	try {
-		const training = await Training.findOne({ slug: req.params.slug })
+		const training = await Training.findOne({ slug: req.params.slug }).populate('user')
 		res.status(200).render('training', {
 			training: training,
 			page_name: 'trainings'

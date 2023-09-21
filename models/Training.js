@@ -23,6 +23,10 @@ const trainingSchema = new Schema({
 	slug: {
 		type: String,
 		unique: true
+	},
+	user: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'User'
 	}
 })
 trainingSchema.pre('validate', function (next) {
