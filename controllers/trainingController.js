@@ -44,10 +44,12 @@ exports.getAllTrainings = async (req, res) => {
 
 exports.getTraining = async (req, res) => {
 	try {
-		const training = await Training.findOne({ slug: req.params.slug })
+		const user = await User.findById(req.session.userID)
+		const training = await Training.findOne({ slug: req.params.slug }).populate('user')
 		res.status(200).render('training', {
 			training: training,
-			page_name: 'trainings'
+			page_name: 'trainings',
+			user
 		})
 	} catch (err) {
 		res.status(400).json({
