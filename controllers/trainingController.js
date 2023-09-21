@@ -44,7 +44,7 @@ exports.getAllTrainings = async (req, res) => {
 
 exports.getTraining = async (req, res) => {
 	try {
-		const training = await Training.findOne({ slug: req.params.slug }).populate('user')
+		const training = await Training.findOne({ slug: req.params.slug })
 		res.status(200).render('training', {
 			training: training,
 			page_name: 'trainings'
@@ -62,14 +62,12 @@ exports.enrollTraining = async (req, res) => {
 		const user = await User.findById(req.session.userID)
 		await user.trainings.push({ _id: req.body.training_id })
 		await user.save()
-		res.status(200).render('training', {
-			training: training,
-			page_name: 'trainings'
-		})
-	} catch (err) {
+
+		res.status(200).redirect('/users/dashboard')
+	} catch (error) {
 		res.status(400).json({
 			status: 'fail',
-			message: err
+			error
 		})
 	}
 }
