@@ -16,6 +16,7 @@
 			<div class="col-md-12">
 				<div class="titlepage"></div>
 			</div>
+
 			<div class="col-md-6 offset-4 center pl-5">
 				<div class="blog-author center">
 					<div class="author-bio center">
@@ -36,6 +37,12 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="row">
+			<form action="/trainings/enroll" method="POST" class="col-md-4 offset-5 pl-5 center">
+				<input type="hidden" name="training_id" value="<%= training._id %>" />
+				<button class="btn btn-md btn-warning text-white"><span>ENROLL</span></button>
+			</form>
 		</div>
 	</div>
 </div>
