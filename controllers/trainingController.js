@@ -3,10 +3,7 @@ const Category = require('../models/Category')
 exports.createTraining = async (req, res) => {
 	try {
 		const training = await Training.create(req.body)
-		res.status(201).json({
-			status: 'success',
-			training
-		})
+		res.status(201).redirect('/trainings')
 	} catch (err) {
 		res.status(400).json({
 			status: 'fail',
@@ -24,7 +21,7 @@ exports.getAllTrainings = async (req, res) => {
 		if (categorySlug) {
 			filter = { category: category._id }
 		}
-		const trainings = await Training.find(filter)
+		const trainings = await Training.find(filter).sort('-createAt')
 		const categories = await Category.find()
 		res.status(200).render('trainings', {
 			trainings: trainings,
