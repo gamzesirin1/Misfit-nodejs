@@ -5,6 +5,8 @@ const router = express.Router()
 router.route('/').post(roleMiddleware(['teacher', 'admin']), trainingController.createTraining)
 router.route('/').get(trainingController.getAllTrainings)
 router.route('/:slug').get(trainingController.getTraining)
+router.route('/:slug').delete(trainingController.deleteTraining)
+router.route('/:slug').put(trainingController.updateTraining)
 router.route('/enroll').post(trainingController.enrollTraining)
 router.route('/release').post(trainingController.releaseTraining)
 

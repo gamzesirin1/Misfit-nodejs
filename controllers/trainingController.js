@@ -88,3 +88,34 @@ exports.releaseTraining = async (req, res) => {
 		})
 	}
 }
+
+exports.deleteTraining = async (req, res) => {
+	try {
+		await Training.findOneAndDelete({ slug: req.params.slug })
+
+		res.status(200).redirect('/users/dashboard')
+	} catch (error) {
+		res.status(400).json({
+			status: 'fail',
+			error
+		})
+	}
+}
+
+exports.updateTraining = async (req, res) => {
+	try {
+		const training = await Training.findOne({ slug: req.params.slug })
+		training.name = req.body.name
+		training.description = req.body.description
+		training.category = req.body.category
+
+		training.save()
+
+		res.status(200).redirect('/users/dashboard')
+	} catch (error) {
+		res.status(400).json({
+			status: 'fail',
+			error
+		})
+	}
+}

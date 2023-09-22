@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const session = require('express-session')
 const mongoStore = require('connect-mongo')
+const methodOverride = require('method-override')
 const dotenv = require('dotenv')
 const db = require('./config/db')
 
@@ -30,6 +31,7 @@ app.use(
 		store: mongoStore.create({ mongoUrl: 'mongodb+srv://ggamzesirinn:QSz1j72spywUQqrF@cluster0.u84unwj.mongodb.net/' })
 	})
 )
+app.use(methodOverride('_method', { methods: ['POST', 'GET'] }))
 
 //Routes
 app.use('*', (req, res, next) => {
