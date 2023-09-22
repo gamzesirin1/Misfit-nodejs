@@ -271,4 +271,67 @@
 		</div>
 	</div>
 </div>
+<% } %>
+<!-- admin section-->
+<% if(user.role ==='admin') { %>
+
+<div class="back_re">
+	<div class="container text-center">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="title">
+					<h2><%= user.name %></h2>
+					<span class="m_1">ADMİN</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="overviews" class="section wb">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 blog-post-single">
+				<div class="blog-author">
+					<div class="author-bio">
+						<h3 class="author_name">COURSES ENROLLED BY :<%= user.name %></h3>
+					</div>
+				</div>
+			</div>
+			<!-- end col -->
+		</div>
+		<!-- end row -->
+
+		<div class="row mt-5">
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">ID#</th>
+						<th scope="col">Email</th>
+						<th scope="col">Role</th>
+						<th scope="col">Delete</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% for (let i=0; i< users.length; i++) { %>
+					<tr>
+						<th scope="row"><%=users[i]._id %></th>
+						<td><%=users[i].email %></td>
+						<td><%=users[i].role %></td>
+						<td>
+							<a href="/users/<%= users[i]._id %>?_method=DELETE" class="btn btn-danger rounded-0 text-white"
+								><span>DELETE</span></a
+							>
+						</td>
+					</tr>
+					<% } %>
+				</tbody>
+			</table>
+		</div>
+		<!-- end row -->
+	</div>
+	<!-- end container -->
+</div>
+
+<!-- end section -->
 <% } %> <% } %> <%- include('partials/_footer'); %>
